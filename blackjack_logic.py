@@ -6,7 +6,7 @@ def calculate_hand_value(hand):
         if card in ['J', 'Q', 'K']:
             value += 10
         elif card == 'A':
-            value += 10
+            value += 11
             aces += 1
         else:
             value += int(card)
@@ -21,7 +21,7 @@ def blackjack_svetovalec():
     """svetovallec za igro blackjack."""
     print("Dobrodošli v Blackjack svetovalcu! Vnesite svoje karte, da dobite nasvet.")
     hand = input("Vnesite svoje karte (ločite jih z vejico, npr. 'A,7'):").split(',')
-    hand = [card.strip().upper for card in hand]
+    hand = [card.strip().upper() for card in hand]
 
     dealer_card = input("Vnesite delilčevo vidno karto: ").strip().upper()
     blackjack = False
@@ -61,16 +61,8 @@ def blackjack_svetovalec():
             print("Odločili ste se za STAND. Poglejva rezultat.")
             break
         else:
-            print("Nveljavna poteza. Poskusite znova.")
+            print("Neveljavna poteza. Poskusite znova.")
     if blackjack == False:
-        rezultat = input("Ali ste zmagali ali izgubili? (zmaga/poraz): ").strip().lower()
-        if rezultat == 'zmaga':
-            print("Čestitam! Uporaba svetovalca se je obrestovala.")
-        elif rezultat == 'poraz':
-            print("Žal ste izgubili. Poskusite ponovno.")
-        else:
-            print("Neveljaven rezultat igre.")
-    if bust == False:
         rezultat = input("Ali ste zmagali ali izgubili? (zmaga/poraz): ").strip().lower()
         if rezultat == 'zmaga':
             print("Čestitam! Uporaba svetovalca se je obrestovala.")

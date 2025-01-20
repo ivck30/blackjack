@@ -14,6 +14,7 @@ def calculate_hand_value(hand):
     while value > 21 and aces:
         value -= 10
         aces -= 1
+   
 
     return value
 
@@ -24,13 +25,19 @@ def blackjack_advisor():
     hand = [card.strip().upper() for card in hand]
 
     dealer_card = input("Vnesite delilčevo vidno karto: ").strip().upper()
-
+    blackjack = False
+    bust = False
     while True:
         hand_value = calculate_hand_value(hand)
         print(f"Vaša trenutna roka ({', '.join(hand)}): {hand_value}")
 
         if hand_value > 21:
             print("Vaša roka presega 21. To je BUST. Konec igre.")
+            bust = True
+            break
+        if hand_value == 21:
+            print("BLACKJACK! Zmagali ste igro!")
+            blackjack = True
             break
 
         # Osnovna strategija
@@ -58,14 +65,22 @@ def blackjack_advisor():
             break
         else:
             print("Neveljavna poteza. Poskusite znova.")
-
-    result = input("Ali ste zmagali ali izgubili? (win/lose): ").strip().lower()
-    if result == 'win':
-        print("Čestitamo! Uporaba strategije se je obrestovala.")
-    elif result == 'lose':
-        print("Žal ste izgubili. Morda poskusite prilagoditi svojo strategijo.")
-    else:
-        print("Neveljaven vnos za rezultat igre.")
+    if blackjack == False:
+        result = input("Ali ste zmagali ali izgubili? (win/lose): ").strip().lower()
+        if result == 'win':
+            print("Čestitamo! Uporaba strategije se je obrestovala.")
+        elif result == 'lose':
+            print("Žal ste izgubili. Morda poskusite prilagoditi svojo strategijo.")
+        else:
+            print("Neveljaven vnos za rezultat igre.")
+    elif bust == False:
+        result = input("Ali ste zmagali ali izgubili? (win/lose): ").strip().lower()
+        if result == 'win':
+            print("Čestitamo! Uporaba strategije se je obrestovala.")
+        elif result == 'lose':
+            print("Žal ste izgubili. Morda poskusite prilagoditi svojo strategijo.")
+        else:
+            print("Neveljaven vnos za rezultat igre.")
 
 if __name__ == "__main__":
     print("hello")
