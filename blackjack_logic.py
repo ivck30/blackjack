@@ -44,7 +44,40 @@ def blackjack_svetovalec():
             print("Nasvet: STAND")
         elif hand_value == 12 and dealer_card in ['4', '5', '6']:
             print("Nasvet: STAND")
+        elif len(hand) == 2 and hand[0] == hand[1]:
+            print("Nasvet: SPLIT")
+        elif hand_value <= 11:
+            print("Nasvet: HIT")
+        else:
+            print("Nasvet: HIT")
         
+        poteza = input("Vnesite vašo potezo (HIT/STAND/SPLIT): ").strip().lower()
+        if poteza == 'hit':
+            nova_karta = input("Vnesite novo karto:").strip().upper()
+            hand.append(nova_karta)
+        elif poteza == 'split':
+            print("Razdelili ste roko. Sledite nadaljnjim nasvetom.")
+        elif poteza == 'stand':
+            print("Odločili ste se za STAND. Poglejva rezultat.")
+            break
+        else:
+            print("Nveljavna poteza. Poskusite znova.")
+    if blackjack == False:
+        rezultat = input("Ali ste zmagali ali izgubili? (zmaga/poraz): ").strip().lower()
+        if rezultat == 'zmaga':
+            print("Čestitam! Uporaba svetovalca se je obrestovala.")
+        elif rezultat == 'poraz':
+            print("Žal ste izgubili. Poskusite ponovno.")
+        else:
+            print("Neveljaven rezultat igre.")
+    if bust == False:
+        rezultat = input("Ali ste zmagali ali izgubili? (zmaga/poraz): ").strip().lower()
+        if rezultat == 'zmaga':
+            print("Čestitam! Uporaba svetovalca se je obrestovala.")
+        elif rezultat == 'poraz':
+            print("Žal ste izgubili. Poskusite ponovno.")
+        else:
+            print("Neveljaven rezultat igre.")
 
 
 if __name__ == "__main__":
